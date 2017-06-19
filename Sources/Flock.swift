@@ -45,8 +45,8 @@ public class Flock {
         }
     }
     
-    public static func serve(ip: String, user: String, roles: [Server.Role], authMethod: SSH.AuthMethod? = nil) {
-        servers.append(Server(ip: ip, user: user, roles: roles, authMethod: authMethod))
+    public static func serve(ip: String, port: Int32 = 22, user: String, roles: [Server.Role], authMethod: SSH.AuthMethod? = nil) {
+        servers.append(Server(ip: ip, port: port, user: user, roles: roles, authMethod: authMethod))
     }
     
     public static func use(_ taskSource: TaskSource) {
