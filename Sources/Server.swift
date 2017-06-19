@@ -30,7 +30,7 @@ public class Server {
     private let session: SSH.Session
     private var commandStack: [String] = []
     
-    public init(ip: String, user: String, roles: [Role], authMethod: SSH.AuthMethod?) {
+    public init(ip: String, port: Int32 = 22, user: String, roles: [Role], authMethod: SSH.AuthMethod?) {
         guard let auth = authMethod ?? Config.SSHAuthMethod else {
             print("Error: ".red + "You must either pass in a SSH auth method in your `Server()` initialization or specify `Config.SSHAuthMethod` in your configuration file")
             exit(1)
@@ -38,7 +38,7 @@ public class Server {
         
         let session: SSH.Session
         do {
-            session = try SSH.Session(host: ip)
+            session = try SSH.Session(host: ip, port: port)
             session.ptyType = .vanilla
             try session.authenticate(username: user, authMethod: auth)
         } catch let error {
