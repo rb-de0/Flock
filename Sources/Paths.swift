@@ -31,7 +31,7 @@ public struct Paths {
     }
     
     public static var relativeExecutable: String {
-        return ".build/release/\(Config.executableName)"
+        return ".build/\(Config.executableName)"
     }
     
 }
